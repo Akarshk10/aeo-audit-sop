@@ -1,0 +1,464 @@
+<!-- AEO SOP - brand-styled document -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#5509F8;
+    --brand-tint:#f3edff;
+    --brand-tint2:#faf8ff;
+    --ink:#1f2330;
+    --muted:#5b6172;
+    --line:#e4e0ef;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#eceaf2;}
+  .page{
+    max-width:860px;
+    margin:0 auto;
+    background:#fff;
+    padding:64px 72px 80px;
+    color:var(--ink);
+    font-family:'Montserrat',sans-serif;
+    font-size:12px;
+    line-height:1.65;
+  }
+
+  /* Title */
+  h1.doc-title{
+    font-family:'Barlow',sans-serif;
+    font-weight:700;
+    font-size:28px;
+    line-height:1.2;
+    color:var(--brand);
+    margin:0 0 6px;
+    letter-spacing:-.2px;
+  }
+  .title-rule{height:3px;background:var(--brand);width:88px;border-radius:3px;margin:0 0 28px;}
+
+  /* Headings — Montserrat 14px Bold per spec */
+  h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;line-height:1.35;}
+  h2{ /* Part-level */
+    color:var(--brand);
+    margin:38px 0 14px;
+    padding-bottom:7px;
+    border-bottom:2px solid var(--brand-tint);
+  }
+  h3{color:var(--ink);margin:26px 0 10px;}
+  h4{color:var(--ink);margin:20px 0 8px;}
+
+  /* Body */
+  p{margin:0 0 12px;}
+  ul{margin:0 0 14px;padding-left:20px;}
+  li{margin:0 0 6px;}
+  strong{font-weight:700;}
+  a{color:var(--brand);text-decoration:none;}
+  hr{border:none;border-top:1px solid var(--line);margin:30px 0;}
+
+  /* Meta block under title */
+  .meta{
+    background:var(--brand-tint2);
+    border:1px solid var(--line);
+    border-left:4px solid var(--brand);
+    border-radius:8px;
+    padding:14px 18px;
+    margin:0 0 28px;
+  }
+  .meta p{margin:0 0 4px;}
+  .meta p:last-child{margin:0;}
+
+  .flow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    background:#0e0a1f;
+    color:#d7c9ff;
+    padding:12px 16px;
+    border-radius:8px;
+    margin:0 0 8px;
+    overflow-x:auto;
+  }
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:11.5px;}
+  thead th{
+    background:var(--brand);
+    color:#fff;
+    font-weight:600;
+    text-align:left;
+    padding:9px 11px;
+    border:1px solid var(--brand);
+  }
+  tbody td{
+    padding:8px 11px;
+    border:1px solid var(--line);
+    vertical-align:top;
+  }
+  tbody tr:nth-child(even){background:var(--brand-tint2);}
+
+  /* Callout / note boxes */
+  blockquote, .note{
+    background:var(--brand-tint);
+    border-left:4px solid var(--brand);
+    border-radius:0 8px 8px 0;
+    padding:11px 16px;
+    margin:0 0 16px;
+    color:#34284f;
+    font-size:11.5px;
+  }
+  blockquote p{margin:0;}
+
+  /* Inline code + paths */
+  code{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    background:#f1eef9;
+    color:#4413c0;
+    padding:1px 5px;
+    border-radius:4px;
+  }
+
+  /* Numbered component blocks */
+  .component{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 18px;
+    margin:0 0 14px;
+  }
+  .component .c-title{font-family:'Montserrat';font-weight:700;font-size:13px;color:var(--brand);margin:0 0 8px;}
+  .component p{margin:0 0 7px;}
+  .component p:last-child{margin:0;}
+  .lbl{font-weight:700;color:var(--ink);}
+
+  @media print{
+    body{background:#fff;}
+    .page{box-shadow:none;padding:24px 0;max-width:100%;}
+    h2,h3{page-break-after:avoid;}
+    table,.component,.note,blockquote{page-break-inside:avoid;}
+  }
+</style>
+
+<div class="page">
+
+  <h1 class="doc-title">AI Search Optimisation (AEO) Standard Operating Procedure</h1>
+  <div class="title-rule"></div>
+
+  <div class="meta">
+    <p><strong>Purpose:</strong> Standardise how the agency runs AI search / Answer Engine Optimisation (AEO) engagements across every client.</p>
+    <p><strong>Scope:</strong> Applies to all AI search projects from kickoff to monthly reporting.</p>
+    <p><strong>Owner:</strong> AI Search team lead. &nbsp;<strong>Review cycle:</strong> Quarterly (protocols in this space change monthly).</p>
+  </div>
+
+  <p><strong>Engagement flow:</strong></p>
+  <div class="flow">Part 1 Prompts → Part 2 Audits (Tech / Content / Links) → Part 3 SoW &amp; Actionables → Part 4 Reporting</div>
+
+  <hr>
+
+  <!-- PART 1 -->
+  <h2>Part 1: Prompt Shortlisting &amp; Bucketing</h2>
+  <p><strong>Objective:</strong> Test the questions real buyers ask AI assistants, not generic keywords. Prompts become the unit of measurement for the whole engagement (audits, gap analysis, and reporting all trace back to this list).</p>
+
+  <h3>Step 1.1 — Build the buyer profile</h3>
+  <ul>
+    <li>Sources: client intake call, existing personas, CRM data, sales-call notes, support tickets, win/loss notes.</li>
+    <li>Capture per persona: role, industry, company size, primary problem, buying triggers, objections, decision criteria, alternatives considered.</li>
+    <li><span class="lbl">Gate:</span> Send the buyer profile to the client for written approval before generating prompts. No prompt generation starts without this sign-off.</li>
+  </ul>
+
+  <h3>Step 1.2 — Generate buyer-intent prompts across the funnel</h3>
+  <p>Generate prompts for each persona, mapped to six intent buckets. Target 8 to 15 prompts per bucket per persona at first pass, then shortlist.</p>
+  <table>
+    <thead><tr><th>Bucket</th><th>Buyer state</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Problem-Aware</td><td>Knows the pain, not the solution category</td><td>"How can I create professional voiceovers for training videos without hiring voice actors?"</td></tr>
+      <tr><td>Exploration / Research</td><td>Comparing solution categories</td><td>"What are the best AI voice generation platforms for enterprises in 2026?"</td></tr>
+      <tr><td>Comparison</td><td>Two or more named options</td><td>"Murf AI vs ElevenLabs: which is better for enterprise teams?"</td></tr>
+      <tr><td>Alternative</td><td>Looking to switch or replace</td><td>"Best enterprise-ready alternatives to ElevenLabs with strong security and compliance?"</td></tr>
+      <tr><td>Use-Case Driven</td><td>Specific scenario or job-to-be-done</td><td>"How can a corporate L&amp;D team produce multilingual training videos at scale?"</td></tr>
+      <tr><td>Brand / Branded (add)</td><td>Knows the brand, validating</td><td>"Is [Brand] good for [use case]? What do reviews say?"</td></tr>
+    </tbody>
+  </table>
+  <blockquote><p><strong>Note:</strong> A "Brand / Branded" bucket is added so the engagement can measure how AI assistants describe the client when named directly. This is where sentiment and review signals surface most.</p></blockquote>
+
+  <h3>Step 1.3 — Shortlist and bucket</h3>
+  <p>Shortlist criteria, scored 1 to 5:</p>
+  <ul>
+    <li>Buyer relevance (does a real buyer ask this?)</li>
+    <li>Commercial intent (proximity to purchase)</li>
+    <li>Brand relevance (can the client credibly answer it?)</li>
+    <li>Competitive exposure (do competitors already win this?)</li>
+  </ul>
+  <p>Keep the top prompts per bucket. Lock the final list in a shared <strong>Prompt Tracker</strong> (one row per prompt: persona, bucket, score, target answer URL, current AI answer status, competitors cited).</p>
+  <div class="note"><strong>Deliverable:</strong> Approved buyer profile + locked Prompt Tracker. This is the input for Parts 2, 3, and 4.</div>
+
+  <hr>
+
+  <!-- PART 2 -->
+  <h2>Part 2: Audits</h2>
+  <p>Three verticals, run in parallel, each producing scored findings that feed the SoW.</p>
+  <table>
+    <thead><tr><th>Vertical</th><th>Question it answers</th><th>Lead role</th></tr></thead>
+    <tbody>
+      <tr><td>2a Technical</td><td>Can AI agents fetch, parse, and trust the site?</td><td>Technical SEO</td></tr>
+      <tr><td>2b Content &amp; Entity</td><td>Does content exist, in enough depth, for every tracked prompt?</td><td>Content / Strategy</td></tr>
+      <tr><td>2c Links &amp; Brand</td><td>Is the brand present, well-rated, and positively talked about where AI reads?</td><td>Off-page / PR</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Part 2a: Technical Audit and Competitor Benchmarking</h3>
+  <div class="note"><strong>Important calibration (state this to every client):</strong> Shipping these protocols does not guarantee AI citations or referral traffic. The evidence shows they do two things: (1) reduce fetch and parse cost for agents already crawling the site (roughly a 5x payload drop via Markdown negotiation), and (2) make the site legible to systems deciding whether to cite it. Google's own AI optimisation guidance states new machine-readable files are not required to appear in generative AI search. Sell preparation and legibility, not certainty.</div>
+
+  <h4>Layer model used in this audit</h4>
+  <ul>
+    <li><strong>Layer 1, the page:</strong> what an agent gets when it fetches a URL (semantic HTML, accessibility, stable layout).</li>
+    <li><strong>Layer 2, around the page:</strong> what is discoverable without rendering (robots.txt, sitemap, Link headers, llms.txt, .well-known files, Markdown negotiation, cards).</li>
+  </ul>
+
+  <h4>Audit toolset (use all three scanners, then manual verify)</h4>
+  <table>
+    <thead><tr><th>Tool</th><th>Covers</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td><code>isitagentready.com</code> (Cloudflare)</td><td>Protocol layer: robots, sitemap, Link headers, well-known files, Markdown negotiation, MCP/A2A, OAuth, Content Signals</td><td>Free</td></tr>
+      <tr><td><code>agentchecker.ai</code></td><td>Sends a real agent to test navigation, forms, signup flows, content hierarchy</td><td>Free tier</td></tr>
+      <tr><td>Glippy (Jan-Willem Bobbink)</td><td>16 GEO dimensions: information density, entity authority, citability, freshness</td><td>Free tier</td></tr>
+      <tr><td>Chrome DevTools (Accessibility tree)</td><td>Manual Layer 1 check, walk the tree as an agent would</td><td>Free</td></tr>
+      <tr><td>Lighthouse "Agentic Browsing" category</td><td>Opt-in llms.txt audit and agent checks</td><td>Free</td></tr>
+      <tr><td><code>curl</code></td><td>Manual verification of every well-known file and header</td><td>Free</td></tr>
+    </tbody>
+  </table>
+  <blockquote><p><strong>Scanner caveat:</strong> a red mark is not always an action item. OAuth and A2A flags are expected red on sites that have no protected API and are not themselves agents. Treat scanner output as a checklist to investigate, not a prescription.</p></blockquote>
+
+  <h4>The 9 components</h4>
+  <p>For each: <strong>Technical</strong> = what it is. <strong>Plain (15-yr-old)</strong> = the simple version. <strong>Audit</strong> = how to check it.</p>
+
+  <div class="component">
+    <p class="c-title">1. Semantic HTML</p>
+    <p><span class="lbl">Technical:</span> Use correct elements (<code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;label for&gt;</code>). Agents walking the accessibility tree read element roles; a <code>&lt;div onclick&gt;</code> is invisible to them. Add <code>role</code> and <code>tabindex</code> to interactive divs, <code>cursor:pointer</code> on clickables, tap targets 24x24px or larger, no ghost overlays.</p>
+    <p><span class="lbl">Plain:</span> Build the page out of the right Lego blocks so a robot reading it knows a button is a button and a link is a link. A button drawn as a plain box confuses the robot.</p>
+    <p><span class="lbl">Audit:</span> Open Chrome DevTools, view the accessibility tree, confirm nav, main, buttons, and form labels appear with correct roles. Run Lighthouse accessibility. Flag any interactive element missing a role or label.</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">2. robots.txt with AI bot rules</p>
+    <p><span class="lbl">Technical:</span> Add explicit <code>Allow</code> / <code>Disallow</code> rules per AI user-agent (GPTBot, ClaudeBot, PerplexityBot, CCBot, anthropic-ai, OAI-SearchBot, Google-Extended). Pair the polite robots signal with CDN/WAF enforcement (Cloudflare, AWS, Fastly) for bots that ignore robots.txt.</p>
+    <p><span class="lbl">Plain:</span> A sign on the door listing which AI robots are welcome. Most polite robots read the sign first. A bouncer at the CDN handles the rude ones.</p>
+    <p><span class="lbl">Audit:</span> Fetch <code>/robots.txt</code>. Confirm each major AI agent is named and the rule is intentional. Blocking everything is the loudest way to disappear from AI search, so confirm blocks are deliberate. Check CDN bot settings.</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">3. sitemap.xml and Link headers</p>
+    <p><span class="lbl">Technical:</span> Maintain a sitemap. Add HTTP <code>Link</code> headers so agents that scan headers find resources without parsing HTML. Use only the four IANA-registered rels that matter for agents: <code>api-catalog</code> (RFC 9727), <code>service-desc</code> (RFC 8631, points to OpenAPI), <code>service-doc</code> (RFC 8631), <code>describedby</code> (RFC 8288, the correct rel for llms.txt). Ignore invented rels like <code>rel="llms"</code> or <code>rel="ai"</code>; scanners ignore them.</p>
+    <p><span class="lbl">Plain:</span> The sitemap is the table of contents. Link headers are sticky notes on the front cover telling the robot where the important stuff is before it reads a single page.</p>
+    <p><span class="lbl">Audit:</span> Fetch the sitemap, confirm it is current. <code>curl -I</code> the homepage, confirm the four valid Link rels are present with correct <code>type=</code> values. Flag any non-registered rels.</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">4. llms.txt</p>
+    <p><span class="lbl">Technical:</span> A plain-text/markdown file at the domain root summarising what the site is and which pages matter (spec at llmstxt.org). Realistic use today is narrow: coding agents with the docs URL hardcoded in their system prompt fetch it (for example Claude Code). Chatbot grounding at query time is not observably reading it yet. Cost to ship is near zero.</p>
+    <p><span class="lbl">Plain:</span> A cheat-sheet at the front door telling AI what the site is about and which pages are the good ones. Mostly useful right now for coding assistants, but cheap insurance for later.</p>
+    <p><span class="lbl">Audit:</span> Fetch <code>/llms.txt</code>. Confirm it exists, loads cleanly, summarises the site, and lists priority URLs. Run the Lighthouse Agentic Browsing audit (resolves Not Applicable if missing, no penalty).</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">5. Open Knowledge Format (OKF)</p>
+    <p><span class="lbl">Technical:</span> A bundle of markdown files (one per page), tagged and cross-linked into a graph an agent can walk. Google introduced it June 2026 (v0.1) under Knowledge Catalog. Nothing crawls the web for these bundles yet. Immediate payoff is a clean machine-legible copy of content plus a structural map of internal links, which doubles as a free site-structure audit.</p>
+    <p><span class="lbl">Plain:</span> A neat zip of the whole site rewritten in robot-friendly text, with a map of how pages connect. Nothing fetches it automatically yet, but making it forces you to see your own site structure clearly.</p>
+    <p><span class="lbl">Audit:</span> Check for an <code>/okf/</code> bundle. If absent, treat as a low-priority early bet. Use a free OKF generator (point it at the sitemap, up to 100 pages) to produce a bundle and use the output as a structural audit.</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">6. Markdown negotiation</p>
+    <p><span class="lbl">Technical:</span> When an agent sends <code>Accept: text/markdown</code>, return a markdown version instead of HTML. Agents parse markdown far more efficiently (logged drops from ~85KB HTML to ~16KB markdown on the same page, roughly 5x). Cloudflare's "Markdown for Agents" does this automatically; otherwise implement via Worker route, middleware, or framework hook.</p>
+    <p><span class="lbl">Plain:</span> When a robot says "give me the simple text version," hand it the stripped-down page instead of the heavy designed one. It reads faster and cheaper. Highest-value item for content sites.</p>
+    <p><span class="lbl">Audit:</span> <code>curl -H "Accept: text/markdown" &lt;url&gt;</code> and confirm markdown is returned, not HTML. If on Cloudflare, confirm the feature is enabled.</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">7. MCP Server Card</p>
+    <p><span class="lbl">Technical:</span> If the site exposes an MCP server, agents discover it via <code>/.well-known/mcp/server-card.json</code> (standardising path, SEP-1649) containing <code>serverInfo</code>, <code>transport</code>, <code>capabilities</code>, and <code>tools</code>. Older flat path <code>/.well-known/mcp-server.json</code> is still checked by some scanners; serve both during transition. Only relevant for sites that host an MCP server.</p>
+    <p><span class="lbl">Plain:</span> If the site offers tools a robot can use (search, lookups), this is the menu card telling the robot what tools exist and how to call them. Skip it if the site has no such tools.</p>
+    <p><span class="lbl">Audit:</span> Fetch both well-known paths. Validate JSON shape. If the client has no MCP server, mark Not Applicable, do not flag as a gap.</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">8. A2A Agent Card</p>
+    <p><span class="lbl">Technical:</span> If the site is itself an agent (offers services other agents call), Google's A2A protocol uses <code>/.well-known/agent.json</code> for discovery (name, description, endpoint, capabilities, version). Bleeding edge, spec still moving; pin to a dated version if shipping. Most content sites do not need this.</p>
+    <p><span class="lbl">Plain:</span> Only matters if your website is itself a robot that other robots can hire. A business card for that robot. Most sites can ignore it.</p>
+    <p><span class="lbl">Audit:</span> Fetch <code>/.well-known/agent.json</code>. Applicable only if the client runs an agent or agent-facing API; otherwise Not Applicable.</p>
+  </div>
+
+  <div class="component">
+    <p class="c-title">9. Content Signals in robots.txt</p>
+    <p><span class="lbl">Technical:</span> A robots.txt extension (IETF draft, contentsignals.org) declaring separate permissions: <code>ai-train=yes|no</code> (training), <code>search=yes|no</code> (citation in AI search), <code>ai-input=yes|no</code> (runtime RAG/grounding). Added as <code>Content-Signal:</code> under a user-agent group. Separates "you can read me" from "you can train on me." On Cloudflare, keep the "Managed robots.txt" toggle OFF if managing the file manually, or it overwrites custom directives.</p>
+    <p><span class="lbl">Plain:</span> Three switches telling AI: you may read me, you may quote me, you may train on me, set independently. Most publishers today allow citation but block training. The client picks their stance.</p>
+    <p><span class="lbl">Audit:</span> Fetch <code>/robots.txt</code>, check for <code>Content-Signal:</code> directives. Confirm values match the client's stated stance. Confirm Cloudflare Managed robots.txt toggle is not overwriting them.</p>
+  </div>
+
+  <h4>Component priority by site type</h4>
+  <p>Use this to decide what to flag as a real gap versus Not Applicable.</p>
+  <table>
+    <thead><tr><th>Component</th><th>Content site</th><th>App / API site</th><th>Ecommerce</th></tr></thead>
+    <tbody>
+      <tr><td>AI bot rules in robots.txt</td><td>Must</td><td>Must</td><td>Must</td></tr>
+      <tr><td>sitemap.xml + Link headers</td><td>Must</td><td>Must</td><td>Must</td></tr>
+      <tr><td>Semantic HTML + accessibility</td><td>Must</td><td>Must</td><td>Must</td></tr>
+      <tr><td>llms.txt</td><td>Must</td><td>Must</td><td>Must</td></tr>
+      <tr><td>Markdown negotiation</td><td>Should</td><td>Optional</td><td>Optional</td></tr>
+      <tr><td>MCP Server Card</td><td>If you run one</td><td>Yes</td><td>If you expose an API</td></tr>
+      <tr><td>A2A Agent Card</td><td>No</td><td>If you ARE an agent</td><td>No</td></tr>
+      <tr><td>Content Signals</td><td>Should</td><td>Should</td><td>Should</td></tr>
+      <tr><td>OKF</td><td>Optional early bet</td><td>Optional early bet</td><td>Optional early bet</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>Minimum viable agent-ready site (best return per minute):</strong> AI bot rules, llms.txt, semantic HTML + accessibility, sitemap + Link headers, and one of (Markdown negotiation for content sites OR MCP/WebMCP for tool-rich sites).</div>
+
+  <h4>Competitor benchmarking (technical)</h4>
+  <ul>
+    <li>Run the same scanner pass (<code>isitagentready.com</code>, manual <code>curl</code>) against the top 3 to 5 competitors named in the Prompt Tracker.</li>
+    <li>Record per competitor: which of the 9 components are present, scanner score, Markdown negotiation present yes/no, llms.txt present yes/no.</li>
+    <li><span class="lbl">Output:</span> a competitor matrix (rows = the 9 components, columns = client + each competitor) showing where the client is behind. This directly feeds the SoW priority.</li>
+  </ul>
+
+  <hr>
+
+  <h3>Part 2b: Content and Entity Audit</h3>
+  <p>Two workstreams: build topical authority, and close content gaps surfaced by the tracked prompts.</p>
+
+  <h4>Workstream 1: Topical authority and SEO fundamentals</h4>
+  <ul>
+    <li>Apply standard SEO content quality across the site: clear topic hierarchy, internal linking, unique demonstrable expertise (first-hand experience, data, named authors), accurate and current information, and entity clarity (consistent brand/product/person naming, About pages, schema for entities).</li>
+    <li><span class="lbl">Density rule (evidence-based):</span> AI search filters favour dense pages. Roughly 32% of a page typically survives the AI search filter, and 800-word dense pages reach 50%+ coverage versus 4,000-word pages at 13%. Write tight, front-load the answer, avoid padding.</li>
+    <li>Map the site's existing content to topics and identify the topical clusters where the client can credibly claim authority.</li>
+  </ul>
+
+  <h4>Workstream 2: Content gap analysis from tracked prompts</h4>
+  <p>For every prompt in the Prompt Tracker, classify the content gap into one of three states:</p>
+  <table>
+    <thead><tr><th>Gap state</th><th>Definition</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>1. No coverage</td><td>Buyers ask it via AI, no page on the site answers it</td><td>Create new content targeting the prompt</td></tr>
+      <tr><td>2. Shallow coverage</td><td>Topic exists but lacks depth to compete for the keyword or appear in LLM results</td><td>Expand, add depth, data, examples, structure</td></tr>
+      <tr><td>3. Zero-search / persona-led</td><td>Prompt has little or no traditional search volume but matches a real buyer persona</td><td>Create persona-driven content; do not gate on search volume</td></tr>
+    </tbody>
+  </table>
+  <blockquote><p><strong>State 3 note:</strong> AI assistants surface answers to questions that never appear in keyword tools. Build content for the persona's real questions even at zero measured volume.</p></blockquote>
+
+  <h4>Workstream 3: Query fan-out coverage</h4>
+  <ul>
+    <li>For each core topic, map the query fan-out (the related sub-questions an AI expands a query into) using a tool such as <code>queryfan.com</code>.</li>
+    <li>Check whether the site has content covering each fanned-out sub-query.</li>
+    <li><span class="lbl">Output:</span> a fan-out coverage map per core topic, flagging uncovered branches as content gaps feeding the SoW.</li>
+  </ul>
+  <div class="note"><strong>Deliverable:</strong> Topical authority map + prioritised content gap list (each item tagged state 1/2/3) + query fan-out coverage map.</div>
+
+  <hr>
+
+  <h3>Part 2c: Links, Brand Mentions, Reviews, and UGC Sentiment</h3>
+  <p><strong>Objective:</strong> AI assistants weight third-party signals (mentions, reviews, UGC) heavily when deciding what to cite about a brand. Audit where the brand is present, absent, under-ranked, and how it is talked about.</p>
+
+  <h4>2c.1 Brand mention gap analysis</h4>
+  <ul>
+    <li><span class="lbl">Competitor-present, client-absent:</span> find content, listicles, and roundups where competitors are mentioned but the client is not. These are mention-acquisition targets.</li>
+    <li><span class="lbl">Client-present-but-weak:</span> find content where the client is mentioned but ranked or positioned below the top 3. These are position-improvement targets (outreach, content updates, getting upgraded in existing listicles).</li>
+    <li><span class="lbl">Output:</span> two lists, "missing mentions" and "weak mentions," each with source URL, competitors present, and outreach angle.</li>
+  </ul>
+
+  <h4>2c.2 Ratings and reviews</h4>
+  <ul>
+    <li>Audit presence and score on platforms AI assistants read: Trustpilot, G2, TripAdvisor, and any vertical-relevant equivalents.</li>
+    <li>Record per platform: profile exists yes/no, rating, review count, recency of reviews, and comparison to top 3 competitors.</li>
+    <li>Flag platforms where the client is absent or materially below competitors.</li>
+  </ul>
+
+  <h4>2c.3 UGC presence and sentiment</h4>
+  <ul>
+    <li>Audit brand presence on UGC platforms AI assistants pull from: Reddit and Quora primarily.</li>
+    <li>Use the in-house tracking tool to record where the client and competitors appear, and run sentiment analysis on the mentions.</li>
+    <li><span class="lbl">Output:</span> UGC presence + sentiment comparison (client vs competitors), flagging negative-sentiment threads (response/remediation targets) and absent high-relevance threads (participation targets).</li>
+  </ul>
+  <div class="note"><strong>Deliverable:</strong> Mention gap lists, review-platform scorecard, and UGC presence + sentiment comparison.</div>
+
+  <hr>
+
+  <!-- PART 3 -->
+  <h2>Part 3: AI Search Optimisation Actionables / SoW</h2>
+  <p>Build the Statement of Work directly from the scored findings in Parts 2a, 2b, and 2c. Every SoW line item must trace to a specific audit finding.</p>
+
+  <h4>Standard SoW structure</h4>
+  <table>
+    <thead><tr><th>Workstream</th><th>Source finding</th><th>Example actionable</th><th>Effort</th><th>Priority</th></tr></thead>
+    <tbody>
+      <tr><td>Technical</td><td>Missing component from 2a matrix</td><td>Ship robots.txt AI rules, llms.txt, Markdown negotiation, Link headers</td><td>Dev</td><td>High</td></tr>
+      <tr><td>Technical</td><td>Behind competitors on 2a matrix</td><td>Close the specific components competitors have and client lacks</td><td>Dev</td><td>High</td></tr>
+      <tr><td>Content (new)</td><td>State 1 gap (no coverage)</td><td>Create page targeting the prompt</td><td>Content</td><td>High/Med</td></tr>
+      <tr><td>Content (expand)</td><td>State 2 gap (shallow)</td><td>Add depth, data, structure to existing page</td><td>Content</td><td>Med</td></tr>
+      <tr><td>Content (persona)</td><td>State 3 gap (zero-search)</td><td>Create persona-led content</td><td>Content</td><td>Med/Low</td></tr>
+      <tr><td>Content (fan-out)</td><td>Uncovered fan-out branch</td><td>Create or extend content for the sub-query</td><td>Content</td><td>Med</td></tr>
+      <tr><td>Links/Brand</td><td>Missing mention</td><td>Outreach to get listed alongside competitors</td><td>Off-page</td><td>Med</td></tr>
+      <tr><td>Links/Brand</td><td>Weak mention</td><td>Upgrade position in existing listicles</td><td>Off-page</td><td>Med</td></tr>
+      <tr><td>Reviews</td><td>Absent or low-rated platform</td><td>Review-generation program on Trustpilot/G2/etc</td><td>CS/Ops</td><td>Med</td></tr>
+      <tr><td>UGC</td><td>Negative sentiment or absent threads</td><td>Reddit/Quora participation and remediation</td><td>PR/Community</td><td>Med</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Suggested additions to consider for the SoW</h4>
+  <ul>
+    <li>Quarterly re-audit cadence, since protocols change monthly.</li>
+    <li>CDN/WAF bot enforcement setup as a paired item with robots.txt.</li>
+    <li>Schema/entity infrastructure work (indirect value as entity infrastructure feeding Knowledge Graph, even though direct citation evidence is weak).</li>
+    <li>A "prompt expansion" line item to add newly discovered buyer prompts each quarter.</li>
+  </ul>
+  <div class="note"><strong>Prioritisation rule:</strong> Rank by (commercial intent of the source prompt) × (competitive exposure) × (effort inverse). Ship the minimum-viable technical set first, then high-intent content gaps, then mention/review/UGC work.</div>
+
+  <hr>
+
+  <!-- PART 4 -->
+  <h2>Part 4: AI Search Reporting</h2>
+  <p>Report monthly. Two metric layers: <strong>visibility</strong> (are we cited?) and <strong>infrastructure</strong> (is the site legible and present?).</p>
+
+  <h4>Core metrics (visibility)</h4>
+  <table>
+    <thead><tr><th>Metric</th><th>Definition</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Prompt visibility rate</td><td>% of tracked prompts where the client appears in the AI answer</td><td>In-house prompt tracker</td></tr>
+      <tr><td>Citation share / Share of Voice</td><td>% of AI answers citing the client vs competitors, per prompt set</td><td>In-house tool</td></tr>
+      <tr><td>Average position in answer</td><td>Where the client is mentioned (first, top 3, beyond)</td><td>In-house tool</td></tr>
+      <tr><td>Sentiment score</td><td>Sentiment of the client's mention in AI answers and UGC</td><td>In-house tool</td></tr>
+      <tr><td>Competitor citation share</td><td>Same metrics for top 3 competitors, for benchmarking</td><td>In-house tool</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Supporting metrics (infrastructure and demand)</h4>
+  <table>
+    <thead><tr><th>Metric</th><th>Definition</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Agent-readiness score</td><td>Scanner score and count of the 9 components shipped</td><td>isitagentready.com / Glippy</td></tr>
+      <tr><td>AI crawler activity</td><td>Volume of AI crawler requests (ChatGPT-User, ClaudeBot, PerplexityBot, etc) and referrals back</td><td>Server logs / Cloudflare bot analytics</td></tr>
+      <tr><td>Content gap closure rate</td><td>% of state 1/2/3 gaps closed this period</td><td>Internal tracker</td></tr>
+      <tr><td>Fan-out coverage</td><td>% of fan-out sub-queries with content</td><td>queryfan.com + tracker</td></tr>
+      <tr><td>Mention coverage</td><td>Missing/weak mentions resolved this period</td><td>Off-page tracker</td></tr>
+      <tr><td>Review presence</td><td>Rating and review count delta per platform</td><td>Trustpilot/G2/etc</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Reporting notes</h4>
+  <ul>
+    <li>Lead with prompt visibility and Share of Voice; these are the outcomes clients care about.</li>
+    <li>Always show client vs top 3 competitors side by side.</li>
+    <li>State clearly each cycle: crawl rate and surfacing/citation rate are different metrics. High crawl volume does not equal citations.</li>
+    <li>Do not promise specific citation outcomes in any report. Report what moved and why.</li>
+  </ul>
+
+  <hr>
+
+  <!-- APPENDIX -->
+  <h2>Appendix: Standardisation Checklist (per engagement)</h2>
+  <ol>
+    <li>Buyer profile approved by client.</li>
+    <li>Prompt Tracker locked with 6 buckets, scored and prioritised.</li>
+    <li>Technical audit run (3 scanners + manual curl) for client and top 3 competitors; 9-component matrix complete.</li>
+    <li>Content audit complete: topical authority map, gap list (states 1/2/3), fan-out coverage map.</li>
+    <li>Links/brand audit complete: mention gaps, review scorecard, UGC sentiment comparison.</li>
+    <li>SoW built with every line traced to a finding and prioritised.</li>
+    <li>Reporting dashboard configured with core + supporting metrics.</li>
+    <li>Re-audit scheduled (quarterly).</li>
+  </ol>
+
+</div>
