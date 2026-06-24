@@ -1,5 +1,5 @@
-<!-- AEO SOP - brand-styled document -->
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- saved from url=(0042)https://akarshk10.github.io/aeo-audit-sop/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link href="./akarshk10.github.io_files/css2" rel="stylesheet">
 <style>
   :root{
     --brand:#5509F8;
@@ -135,7 +135,7 @@
   }
 </style>
 
-<div class="page">
+</head><body><div class="page">
 
   <h1 class="doc-title">Answer Engine Optimisation (AEO) SOP</h1>
   <div class="title-rule"></div>
@@ -159,6 +159,7 @@
   <ul>
     <li>Sources: client intake call, existing personas, CRM data, sales-call notes, support tickets, win/loss notes.</li>
     <li>Capture per persona: role, industry, company size, primary problem, buying triggers, objections, decision criteria, alternatives considered.</li>
+    <li>Get the list of core offerings / primary products or categories to target for AI search, confirmed with the client.</li>
     <li><span class="lbl">Gate:</span> Send the buyer profile to the client for written approval before generating prompts. No prompt generation starts without this sign-off.</li>
   </ul>
 
@@ -185,7 +186,7 @@
     <li>Brand relevance (can the client credibly answer it?)</li>
     <li>Competitive exposure (do competitors already win this?)</li>
   </ul>
-  <p>Keep the top prompts per bucket. Lock the final list in a shared <strong>Prompt Tracker</strong> (one row per prompt: persona, bucket, score, target answer URL, current AI answer status, competitors cited).</p>
+  <p>Keep the top prompts per bucket. This shortlist is confirmed by the client before it is updated in the tracker. Once confirmed, lock the final list in a shared <strong>Prompt Tracker</strong> (one row per prompt).</p>
   <div class="note"><strong>Deliverable:</strong> Approved buyer profile + locked Prompt Tracker. This is the input for Parts 2, 3, and 4.</div>
 
   <hr>
@@ -196,7 +197,7 @@
   <table>
     <thead><tr><th>Vertical</th><th>Question it answers</th><th>Lead role</th></tr></thead>
     <tbody>
-      <tr><td>2a Technical</td><td>Can AI agents fetch, parse, and trust the site?</td><td>Technical SEO</td></tr>
+      <tr><td>2a Technical</td><td>Can AI agents fetch and parse the site cleanly?</td><td>Technical SEO</td></tr>
       <tr><td>2b Content &amp; Entity</td><td>Does content exist, in enough depth, for every tracked prompt?</td><td>Content / Strategy</td></tr>
       <tr><td>2c Links &amp; Brand</td><td>Is the brand present, well-rated, and positively talked about where AI reads?</td><td>Off-page / PR</td></tr>
     </tbody>
@@ -348,6 +349,26 @@
   </ul>
   <div class="note"><strong>Deliverable:</strong> Topical authority map + prioritised content gap list (each item tagged state 1/2/3) + query fan-out coverage map.</div>
 
+  <h4>Workstream 4: Source analysis (owned vs third-party)</h4>
+  <p><strong>Objective:</strong> Determine whether the client's industry gets sourced from owned vs third-party content, to decide where to seed (own site, third-party platforms, or guest posts). Ecommerce may lean on on-site ratings/reviews; B2B/SaaS may lean third-party. Confirm with data, do not assume.</p>
+  <p><strong>Method:</strong></p>
+  <ul>
+    <li>Run a mix of informational and commercial prompts (use the Prompt Tracker plus a few broad info prompts) across the major AI assistants for a few days.</li>
+    <li>Record, separately, the sources behind two different outputs:
+      <ul>
+        <li><strong>Citations:</strong> the URLs/domains the AI uses to answer informational and commercial prompts.</li>
+        <li><strong>Brand mentions:</strong> the sources where the brand (and competitors) get named.</li>
+      </ul>
+    </li>
+    <li>Tag each source as owned (client domain) or third-party (listicle, review platform, Reddit/Quora, editorial, competitor blog, etc).</li>
+  </ul>
+  <p><strong>Output:</strong> Two source-split summaries.</p>
+  <ul>
+    <li>Citation source split, for example &ldquo;30% owned content, 70% third-party.&rdquo;</li>
+    <li>Brand mentions source split, for example &ldquo;mentions come mostly from third-party listicles.&rdquo;</li>
+  </ul>
+  <div class="note"><strong>Deliverable:</strong> Owned-vs-third-party source split (citations and brand mentions, reported separately).</div>
+
   <hr>
 
   <h3>Part 2c: Links, Brand Mentions, Reviews, and UGC Sentiment</h3>
@@ -369,7 +390,7 @@
 
   <h4>2c.3 UGC presence and sentiment</h4>
   <ul>
-    <li>Audit brand presence on UGC platforms AI assistants pull from: Reddit and Quora primarily.</li>
+    <li>Audit brand presence on UGC platforms AI assistants pull from: Reddit, Linkedin, Youtube, Instagram, etc.</li>
     <li>Use the in-house tracking tool to record where the client and competitors appear, and run sentiment analysis on the mentions.</li>
     <li><span class="lbl">Output:</span> UGC presence + sentiment comparison (client vs competitors), flagging negative-sentiment threads (response/remediation targets) and absent high-relevance threads (participation targets).</li>
   </ul>
@@ -385,16 +406,16 @@
   <table>
     <thead><tr><th>Workstream</th><th>Source finding</th><th>Example actionable</th><th>Effort</th><th>Priority</th></tr></thead>
     <tbody>
-      <tr><td>Technical</td><td>Missing component from 2a matrix</td><td>Ship robots.txt AI rules, llms.txt, Markdown negotiation, Link headers</td><td>Dev</td><td>High</td></tr>
-      <tr><td>Technical</td><td>Behind competitors on 2a matrix</td><td>Close the specific components competitors have and client lacks</td><td>Dev</td><td>High</td></tr>
+      <tr><td>Links/Brand</td><td>Missing mention</td><td>Outreach to get listed alongside competitors</td><td>Off-page</td><td>High</td></tr>
+      <tr><td>Links/Brand</td><td>Weak mention</td><td>Upgrade position in existing listicles</td><td>Off-page</td><td>High</td></tr>
+      <tr><td>Reviews</td><td>Absent or low-rated platform</td><td>Review-generation program on Trustpilot/G2/etc</td><td>CS/Ops</td><td>High</td></tr>
+      <tr><td>UGC</td><td>Negative sentiment or absent threads</td><td>Reddit/Quora participation and remediation</td><td>PR/Community</td><td>High</td></tr>
       <tr><td>Content (new)</td><td>State 1 gap (no coverage)</td><td>Create page targeting the prompt</td><td>Content</td><td>High/Med</td></tr>
       <tr><td>Content (expand)</td><td>State 2 gap (shallow)</td><td>Add depth, data, structure to existing page</td><td>Content</td><td>Med</td></tr>
       <tr><td>Content (persona)</td><td>State 3 gap (zero-search)</td><td>Create persona-led content</td><td>Content</td><td>Med/Low</td></tr>
       <tr><td>Content (fan-out)</td><td>Uncovered fan-out branch</td><td>Create or extend content for the sub-query</td><td>Content</td><td>Med</td></tr>
-      <tr><td>Links/Brand</td><td>Missing mention</td><td>Outreach to get listed alongside competitors</td><td>Off-page</td><td>Med</td></tr>
-      <tr><td>Links/Brand</td><td>Weak mention</td><td>Upgrade position in existing listicles</td><td>Off-page</td><td>Med</td></tr>
-      <tr><td>Reviews</td><td>Absent or low-rated platform</td><td>Review-generation program on Trustpilot/G2/etc</td><td>CS/Ops</td><td>Med</td></tr>
-      <tr><td>UGC</td><td>Negative sentiment or absent threads</td><td>Reddit/Quora participation and remediation</td><td>PR/Community</td><td>Med</td></tr>
+      <tr><td>Technical</td><td>Missing component from 2a matrix</td><td>Ship robots.txt AI rules, llms.txt, Markdown negotiation, Link headers</td><td>Dev</td><td>High/Med</td></tr>
+      <tr><td>Technical</td><td>Behind competitors on 2a matrix</td><td>Close the specific components competitors have and client lacks</td><td>Dev</td><td>High/Med</td></tr>
     </tbody>
   </table>
 
@@ -405,7 +426,7 @@
     <li>Schema/entity infrastructure work (indirect value as entity infrastructure feeding Knowledge Graph, even though direct citation evidence is weak).</li>
     <li>A "prompt expansion" line item to add newly discovered buyer prompts each quarter.</li>
   </ul>
-  <div class="note"><strong>Prioritisation rule:</strong> Rank by (commercial intent of the source prompt) × (competitive exposure) × (effort inverse). Ship the minimum-viable technical set first, then high-intent content gaps, then mention/review/UGC work.</div>
+  <div class="note"><strong>Prioritisation rule:</strong> Ship the minimum-viable technical set first, as it unblocks everything else. Then run links/reviews/UGC and content workstreams at the same time rather than batching one after the other, following the priority in the table above (links, reviews, and UGC are high; content is mid to low).</div>
 
   <hr>
 
@@ -422,6 +443,7 @@
       <tr><td>Average position in answer</td><td>Where the client is mentioned (first, top 3, beyond)</td><td>In-house tool</td></tr>
       <tr><td>Sentiment score</td><td>Sentiment of the client's mention in AI answers and UGC</td><td>In-house tool</td></tr>
       <tr><td>Competitor citation share</td><td>Same metrics for top 3 competitors, for benchmarking</td><td>In-house tool</td></tr>
+      <tr><td>Referral traffic from AI sources</td><td>Sessions and clicks driven from AI assistants/search to the site</td><td>GA4</td></tr>
     </tbody>
   </table>
 
@@ -462,3 +484,4 @@
   </ol>
 
 </div>
+</body></html>
